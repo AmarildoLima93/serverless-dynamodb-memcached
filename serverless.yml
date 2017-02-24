@@ -1,0 +1,82 @@
+service: serverless-dynamodb-memcached
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: dev
+  region: us-east-1
+  environment:
+    MEMCACHED_HOST: 172.17.0.3:11211
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+functions:
+    create:
+        handler: api/create/handler.main
+        events:
+            - http:
+                path: api/create
+                method: post
+                cors: true
+
+    list:
+        handler: api/list/handler.main
+        events:
+            - http:
+                path: api/get/
+                method: get
+                cors: true
+
+    get:
+        handler: api/get/handler.main
+        events:
+            - http:
+                path: api/get/{id}
+                method: get
+                cors: true
+
+    update:
+        handler: api/update/handler.main
+        events:
+            - http:
+                path: api/update/{id}
+                method: put
+                cors: true
+
+    delete:
+        handler: api/delete/handler.main
+        events:
+            - http:
+                path: api/delete/{id}
+                method: delete
+                cors: true
+
+resources:
+    Resources:
+        TodosDynamoDBTable:
+            Type: 'AWS::DynamoDB::Table'
+            DeletionPolicy: Retain
+            Properties:
+                AttributeDefinitions:
+                    -
+                        AttributeName: id
+                        AttributeType: S
+                KeySchema:
+                    -
+                        AttributeName: id
+                        KeyType: HASH
+                ProvisionedThroughput:
+                    ReadCapacityUnits: 1
+                    WriteCapacityUnits: 1
+                TableName: ${self:provider.environment.DYNAMODB_TABLE}

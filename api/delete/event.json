@@ -1,0 +1,51 @@
+{
+   "resource":"/api/delete/{id}",
+   "path":"/api/delete/b0f6e080-f6bd-11e6-bab0-afc53e063715",
+   "httpMethod":"GET",
+   "headers":{
+      "Accept":"*/*",
+      "CloudFront-Forwarded-Proto":"https",
+      "CloudFront-Is-Desktop-Viewer":"true",
+      "CloudFront-Is-Mobile-Viewer":"false",
+      "CloudFront-Is-SmartTV-Viewer":"false",
+      "CloudFront-Is-Tablet-Viewer":"false",
+      "CloudFront-Viewer-Country":"BR",
+      "Content-Type":"application/x-www-form-urlencoded",
+      "Host":"6guqg6lvl0.execute-api.us-east-1.amazonaws.com",
+      "User-Agent":"curl/7.35.0",
+      "Via":"1.1 1a4d03bd8d4b132aef0533aa1a478f23.cloudfront.net (CloudFront)",
+      "X-Amz-Cf-Id":"4v7lFUzDnaCT4KBStfaRu0LkL9-hPuDZ2SGH6WEjMl17A3KigNSJNA==",
+      "X-Amzn-Trace-Id":"Root=1-58acdaae-651f2e6a141de7356ac5078e",
+      "X-Forwarded-For":"189.34.247.91, 54.182.233.78",
+      "X-Forwarded-Port":"443",
+      "X-Forwarded-Proto":"https"
+   },
+   "queryStringParameters":null,
+   "pathParameters": { "id": "b0f6e080-f6bd-11e6-bab0-afc53e063715" },
+   "stageVariables":null,
+   "requestContext":{
+      "accountId":"244092159954",
+      "resourceId":"f71wd4",
+      "stage":"dev",
+      "requestId":"89e747a4-f895-11e6-a77c-bf9521a83ee8",
+      "identity":{
+         "cognitoIdentityPoolId":null,
+         "accountId":null,
+         "cognitoIdentityId":null,
+         "caller":null,
+         "apiKey":null,
+         "sourceIp":"189.34.247.91",
+         "accessKey":null,
+         "cognitoAuthenticationType":null,
+         "cognitoAuthenticationProvider":null,
+         "userArn":null,
+         "userAgent":"curl/7.35.0",
+         "user":null
+      },
+      "resourcePath":"/api/delete/{id}",
+      "httpMethod":"DELETE",
+      "apiId":"6guqg6lvl0"
+   },
+   "isBase64Encoded":false,
+   "body": null
+}
